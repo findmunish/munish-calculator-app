@@ -1,0 +1,12 @@
+<form #formArea="ngForm" (ngSubmit)="calculateArea()">
+  <h4>Enter {{figureObj.name}} Dimensions</h4>
+  <label class="spacing">Enter {{figureObj.name}} Radius: </label>
+  <input type="number" class="form-basic" name="radius" [(ngModel)]="figureObj.dimensions.radius" #radius="ngModel" placeholder="Radius:" required>
+  <br/><br/>
+  <div *ngIf="radius.invalid && (radius.dirty || radius.touched)" class="alert">
+    <div *ngIf="radius.errors.required">
+      Radius is required
+    </div>
+  </div>
+  <input class="btn btn-success" type="submit" [disabled]="formArea.invalid" value="Submit">
+</form>

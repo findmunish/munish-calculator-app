@@ -1,0 +1,45 @@
+<div class="card-body">
+	<h4>Percentage Calculator</h4>
+  <form [formGroup]="simpleInterestForm" (ngSubmit)="simpleInterestForm.valid && calculateSimpleInterest()">
+    <div class="form-group">
+			<label>{{labelPrincipal}}:</label>
+			<input type="number" class="form-control" formControlName="principal">
+			<div class="alert alert-danger"
+				*ngIf="simpleInterestForm.controls.principal.touched && simpleInterestForm.controls.principal.errors">
+				{{labelPrincipal}} is required!
+			</div>
+		</div>
+    <div class="form-group">
+			<label>{{labelRate}}:</label>
+			<input type="number" class="form-control" formControlName="rate">
+			<div class="alert alert-danger"
+				*ngIf="simpleInterestForm.controls.rate.touched && simpleInterestForm.controls.rate.errors">
+				{{labelRate}} is required!
+			</div>
+		</div>
+    <div class="form-group">
+			<label>{{labelTime}}:</label>
+			<input type="number" class="form-control" formControlName="time">
+			<div class="alert alert-danger"
+				*ngIf="simpleInterestForm.controls.time.touched && simpleInterestForm.controls.time.errors">
+				{{labelTime}} is required!
+			</div>
+		</div>
+    <button type="submit" class="btn btn-success spacing" [disabled]="simpleInterestForm.invalid">Submit</button>
+    <button type="submit" class="btn btn-danger spacing" [disabled]="simpleInterestForm.invalid" (click)="simpleInterestForm.reset()">Reset</button>
+  </form>
+  <div class="alert alert-primary" *ngIf="calculatedInterest">
+    <div>
+      {{labelPrincipal}}:<span>₹ {{simpleInterestForm.controls.principal.value}}</span>
+    </div>
+    <div>
+      {{labelRate}}:<span> {{simpleInterestForm.controls.rate.value}} %</span>
+    </div>
+    <div>
+      {{labelTime}}:<span> {{simpleInterestForm.controls.time.value}} years</span>
+    </div>
+    <div class="alert alert-danger">
+      Calculated Simple Interest:<span> ₹ {{calculatedInterest}}</span>
+    </div>
+  </div>
+</div>

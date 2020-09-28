@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <form [formGroup]="tempConvForm">
+    <table class="table" border="0px">
+      <thead>
+        <tr>
+          <th style="text-align:right;">
+            <label class="spacing">Temperature {{tempObj.name}}:</label>
+          </th>
+          <th style="text-align:right;">
+            <input type="number" id="temperature" class="spacing" formControlName='temperature'>
+          </th>
+          <th>
+            <label style="text-align:left;" class="spacing">&deg;{{tempObj.units}}</label>
+          </th>
+        </tr>
+        <tr>
+          <th style="text-align: center;" colspan=3>
+            {{tempObj.name}} Value: {{tempObj.temp}}&deg;{{tempObj.units}} => {{tempObj.convertedName}} Value: {{tempObj.convertedTemp}}&deg;{{tempObj.convertedUnits}}
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </form>
+</div>

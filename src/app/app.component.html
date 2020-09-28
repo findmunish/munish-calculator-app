@@ -1,0 +1,19 @@
+<nav>
+  <button class="btn btn-primary" [disabled]="isShowSelectionScreen" (click)="OnClickHome()" routerLink={{operationSelected.routingLink}}>Home</button>
+</nav>
+
+<div class="jumbotron" *ngIf="isShowSelectionScreen">
+  <h1> {{title}}</h1>
+  <form #operationsForm="ngForm" (ngSubmit)="executeOperation()">
+    <label class="spacing">Please choose:</label>
+    <select [(ngModel)]="operationSelected.name" (change)="selectOperation()" class="spacing" name="selectOperation" required>
+      <option *ngFor = "let operation of operations">{{operation.name}}</option>
+    </select>
+    <button [disabled]="operationsForm.invalid" class="btn btn-info" [ngClass]="{'btn btn-success': operationsForm.valid}" routerLink={{operationSelected.routingLink}}>Execute Operation</button>
+  </form>
+</div>
+<div *ngIf="!isShowSelectionScreen">
+  <h1 style="text-align: center;"> {{operationSelected.name}} </h1>
+</div>
+
+<router-outlet></router-outlet>

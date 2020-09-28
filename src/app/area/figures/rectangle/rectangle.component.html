@@ -1,0 +1,20 @@
+<form #formArea="ngForm" (ngSubmit)="calculateArea()">
+  <h4>Enter {{figureObj.name}} Dimensions</h4>
+  <label class="spacing">Enter {{figureObj.name}} Length:</label>
+  <input type="number" class="form-basic" name="length" [(ngModel)]="figureObj.dimensions.length" #length="ngModel" placeholder="Length:" required>
+  <br/><br/>
+  <div *ngIf="length.invalid && (length.dirty || length.touched)" class="alert">
+    <div *ngIf="length.errors.required">
+      Length is required
+    </div>
+  </div>
+  <label class="spacing">Enter {{figureObj.name}} Width:</label>
+  <input type="number" class="form-basic" name="width" [(ngModel)]="figureObj.dimensions.width" #width="ngModel" placeholder="Width:" required>
+  <br/><br/>
+  <div *ngIf="width.invalid && (width.dirty || width.touched)" class="alert">
+    <div *ngIf="width.errors.required">
+      Width is required
+    </div>
+  </div>
+  <input class="btn btn-success" type="submit" [disabled]="formArea.invalid" value="Submit">
+</form>
