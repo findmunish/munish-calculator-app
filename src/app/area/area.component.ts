@@ -38,6 +38,6 @@ export class AreaComponent implements OnInit {
   getArea(area) {
     let obj = this.figures[this.selectedFigure.index];
     obj.area = area;
-    this.alertMessage = `The area of the given ${obj.name} having dimensions ${JSON.stringify(obj.dimensions)} is ${obj.area}`;
+    this.alertMessage = `The area of the given ${obj.name} having dimensions ${JSON.stringify(obj.dimensions)} is ${obj.area.toFixed(2)}`;
   }
 }
