@@ -1,20 +1,21 @@
 import {figure, operation} from './figuresInterface';
-
-export const OPERATIONS: operation[] = [
-      { operationType: 'perimeter' },
-      { operationType: 'area' }
-    ]
-
-export const FigureType = {
-      RECTANGLE: 0,
-      SQUARE: 1,
-      CIRCLE: 2,
-      TRIANGLE: 3
+export const OPERATION_TYPES = {
+      AREA: 'area',
+      PERIMETER: 'Perimeter'
     };
-
+export const FIGURE_TYPES = {
+      RECTANGLE: 'Rectangle',
+      SQUARE: 'Square',
+      CIRCLE: 'Circle',
+      TRIANGLE: 'Triangle'
+    };
+export const OPERATIONS: operation[] = [
+      { operationType: OPERATION_TYPES.AREA },
+      { operationType: OPERATION_TYPES.PERIMETER }
+    ]
 export const FIGURES: figure[] = [
       {
-        name: 'Rectangle',
+        name: FIGURE_TYPES.RECTANGLE,
         figureEdges: [
           {
             value: '',
@@ -25,36 +26,36 @@ export const FIGURES: figure[] = [
             caption: 'Width'
           },
         ],
-        operation: 'area',
+        operation: OPERATION_TYPES.AREA,
         result: -1.0, 
-        calculateFn: null
+        calculateFn: calculateForRectangle
       },
       {
-        name: 'Square',
+        name: FIGURE_TYPES.SQUARE,
         figureEdges: [
           {
             value: '',
             caption: 'Side'
           }
         ],
-        operation: 'area',
+        operation: OPERATION_TYPES.AREA,
         result: -1.0,
-        calculateFn: null
+        calculateFn: calculateForSquare
       },
       {
-        name: 'Circle',
+        name: FIGURE_TYPES.CIRCLE,
         figureEdges: [
           {
             value: '',
             caption: 'Radius'
           }
         ],
-        operation: 'area',
+        operation: OPERATION_TYPES.AREA,
         result: -1.0,
-        calculateFn: null
+        calculateFn: calculateForCircle
       },
       {
-        name: 'Triangle',
+        name: FIGURE_TYPES.TRIANGLE,
         figureEdges: [
           {
             value: '',
@@ -69,8 +70,50 @@ export const FIGURES: figure[] = [
             caption: 'SideC'
           }
         ],
-        operation: 'area',
+        operation: OPERATION_TYPES.AREA,
         result: -1.0,
-        calculateFn: null
+        calculateFn: calculateForTriangle
       }
     ];
+
+function calculateForRectangle(figure) {
+  let length = figure.figureEdges[0].value;
+  let width = figure.figureEdges[1].value;
+  if(figure.operation.toLowerCase() === OPERATION_TYPES.AREA) {
+    figure.result = length * width;
+  } else if(figure.operation.toLowerCase() === OPERATION_TYPES.PERIMETER) {
+    figure.result = 2 * (length + width);
+  }
+  return figure.result;
+}
+function calculateForSquare(figure) {
+  let side = figure.figureEdges[0].value;
+  if(figure.operation.toLowerCase() === OPERATION_TYPES.AREA) {
+    figure.result = side * side;
+  } else if(figure.operation.toLowerCase() === OPERATION_TYPES.PERIMETER) {
+    figure.result = 4 * side;
+  }
+  return figure.result;
+}
+function calculateForCircle(figure) {
+  let radius = figure.figureEdges[0].value;
+  let pi = Math.PI;
+  if(figure.operation.toLowerCase() === OPERATION_TYPES.AREA) {
+    figure.result = pi * Math.pow(radius, 2);
+  } else if(figure.operation.toLowerCase() === OPERATION_TYPES.PERIMETER) {
+    figure.result = 2 * pi * radius;
+  }
+  return figure.result;
+}
+function calculateForTriangle(figure) {
+  let side1 = figure.figureEdges[0].value;
+  let side2 = figure.figureEdges[1].value;
+  let side3 = figure.figureEdges[2].value;
+  if(figure.operation.toLowerCase() === OPERATION_TYPES.AREA) {
+    let s = (side1 + side2 + side3 ) / 2;
+    figure.result = Math.sqrt( s*((s-side1)*(s-side2)*(s-side3)) );
+  } else if(figure.operation.toLowerCase() === OPERATION_TYPES.PERIMETER) {
+    figure.result = side1 + side2 + side3;
+  }
+  return figure.result;
+}
