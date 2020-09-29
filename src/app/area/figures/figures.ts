@@ -1,7 +1,7 @@
 import {figure, operation} from './figuresInterface';
 export const OPERATION_TYPES = {
       AREA: 'area',
-      PERIMETER: 'Perimeter'
+      PERIMETER: 'perimeter'
     };
 export const FIGURE_TYPES = {
       RECTANGLE: 'Rectangle',
