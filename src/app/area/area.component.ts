@@ -17,7 +17,7 @@ export class AreaComponent implements OnInit {
   }
   figures = FIGURES;
   operations = OPERATIONS;
-  selectedObject = { name: '', operationType: '', index: -1, displayFigureTypeSelection: false, shapeType:'', shape:'', isDrawShape: false };
+  selectedObject = { name: '', operationType: '', index: -1, displayFigureTypeSelection: false, shape:'', isDrawShape: false };
   alertMessage = '';
   calculateForRectangle(figure) {
     let length = figure.figureEdges[0].value;
@@ -91,13 +91,9 @@ export class AreaComponent implements OnInit {
     this.alertMessage = '';
     this.selectedObject.isDrawShape = true;
     this.figures[this.selectedObject.index].result = -1;
-    this.selectedObject.shapeType = 'show-shape'
     this.selectedObject.shape = this.selectedObject.name.toLowerCase();
-    if (this.selectedObject.name === 'Triangle') {
-      this.selectedObject.shapeType = 'show-triangle'
-    }
   }
   resetSelectedObject() {
-    this.selectedObject = { name: '', operationType: '', displayFigureTypeSelection: false, index: -1, shapeType:'', shape:'', isDrawShape: false };
+    this.selectedObject = { name: '', operationType: '', displayFigureTypeSelection: false, index: -1, shape:'', isDrawShape: false };
   }
 }

@@ -7,15 +7,28 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./draw.component.css'],
   animations: [
                 trigger('drawShape',[
-                  state('show-shape', style({
+                  state('rectangle', style({
+                      width: '100px',
                       backgroundColor: '#555',
                       display: "block",
                     })
                   ),
-                  state('show-triangle', style({
+                  state('square', style({
+                      width: '50px',
+                      backgroundColor: '#555',
+                      display: "block",
+                    })
+                  ),
+                  state('triangle', style({
                       borderLeft: '25px solid transparent',
                       borderRight: '25px solid transparent',
                     	borderBottom: '50px solid #555',
+                      display: "block"
+                    })
+                  ),
+                  state('circle', style({
+                    	borderRadius: '50%',
+                      backgroundColor: '#555',
                       display: "block"
                     })
                   ),

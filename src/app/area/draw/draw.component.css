@@ -1,15 +1,12 @@
 .circle {
   height: 50px;
   width: 50px;
-  border-radius: 50%;
 }
 .square {
   height: 50px;
-  width: 50px;
 }
 .rectangle {
   height: 50px;
-  width: 100px;
 }
 .triangle {
 	width: 0;
