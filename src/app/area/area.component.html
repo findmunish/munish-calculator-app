@@ -1,17 +1,20 @@
 <div class="jumbotron">
     <h2>Area Calculator</h2>
-    <label class="spacing">Calculate Area For:</label>
-    <select [(ngModel)]="selectedFigure.name" (change)="selectOperation()" class="spacing" name="selectOperation" required>
-      <option *ngFor = "let figure of figures">{{figure.name}}</option>
+    <label class="spacing">Select Operation Type:</label>
+    <select [(ngModel)]="selectedObject.operationType" (change)="selectOperation()" class="spacing" name="operation" required>
+      <option *ngFor = "let operation of operations">{{operation.operationType}}</option>
     </select>
+    <br/><br/>
+    <div *ngIf="selectedObject.displayFigureTypeSelection">
+      <label class="spacing">Calculate {{selectedObject.operationType}} for:</label>
+      <select [(ngModel)]="selectedObject.name" (change)="selectFigure()" class="spacing" name="figure" required>
+        <option *ngFor = "let figure of figures">{{figure.name}}</option>
+      </select>
+    </div>
     <br/><hr/>
-    <app-circle *ngIf="selectedFigure.name === 'Circle'" [figureObj]='setFigureObj()' (setArea)='getArea($event)'></app-circle>
-    <app-rectangle *ngIf="selectedFigure.name === 'Rectangle'" [figureObj]='setFigureObj()' (setArea)='getArea($event)'></app-rectangle>
-    <app-square *ngIf="selectedFigure.name === 'Square'" [figureObj]='setFigureObj()' (setArea)='getArea($event)'></app-square>
-    <app-triangle *ngIf="selectedFigure.name === 'Triangle'" [figureObj]='setFigureObj()' (setArea)='getArea($event)'></app-triangle>
+    <app-figures *ngIf="selectedObject && selectedObject.name !== ''" [figureObj]='setFigureObj()' (calculate)='calculateFn($event)'> </app-figures>
 </div>
-
-<app-draw [drawFigure]='setSelectedFigure()'></app-draw>
+<app-draw [drawFigure]='setSelectedObject()'></app-draw>
 <div class="card-body">
   <div style="margin-top: 15px;">
 		<div class="alert alert-success" role="alert" *ngIf="alertMessage">
