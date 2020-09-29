@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AreaComponent } from './area.component';
 import { FiguresComponent } from './figures/figures.component';
-import { DrawComponent } from './figures/draw/draw.component';
+import { DrawComponent } from './draw/draw.component';
 
 const routes: Routes = [
   { path: '', component: AreaComponent}
