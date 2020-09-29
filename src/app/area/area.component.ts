@@ -44,9 +44,11 @@ export class AreaComponent implements OnInit {
     return this.selectedObject;
   }
   selectOperation() {
+    let operationType = this.selectedObject.operationType;
+    this.resetSelectedObject();
     this.selectedObject.displayFigureTypeSelection = true;
     for (let i = 0; i < this.figures.length; i++) {
-      this.figures[i].operation = this.selectedObject.operationType;
+      this.figures[i].operation = operationType;
     }
   }
   selectFigure() {
