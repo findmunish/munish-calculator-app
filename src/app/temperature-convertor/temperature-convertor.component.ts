@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TEMPERATURES } from './temperatureData';
 
 @Component({
   selector: 'app-temperature-convertor',
@@ -10,17 +11,14 @@ export class TemperatureConvertorComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  temperatureArray = [
-                        {name: 'Celsius', convertedName: 'Farhenheit', units: 'C', convertedUnits: 'F', temp: 0, convertedTemp: 0, tempConvFn: this.celsius2Fahrenheit},
-                        {name: 'Farhenheit', convertedName: 'Celsius', units: 'F',convertedUnits: 'C',  temp: 0, convertedTemp: 0, tempConvFn: this.fahrenheit2Celsius},
-                    ]
+  temperatureArray = TEMPERATURES;
   setTempObj(index) {
     return this.temperatureArray[index];
   }
   fahrenheit2Celsius(temp) {
-    return (temp - 32) * (5/9)
+    return (temp - 32) * (5/9);
   }
   celsius2Fahrenheit(temp) {
-    return (temp * (9/5)) + 32
+    return (temp * (9/5)) + 32;
   }
 }
