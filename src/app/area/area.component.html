@@ -2,7 +2,7 @@
     <h2>Area Calculator</h2>
     <label class="spacing">Select Operation Type:</label>
     <select [(ngModel)]="selectedObject.operationType" (change)="selectOperation()" class="spacing" name="operation" required>
-      <option *ngFor = "let operation of operations">{{operation.operationType}}</option>
+      <option *ngFor = "let operation of operations">{{convertToSentenceCase(operation.operationType)}}</option>
     </select>
     <br/><br/>
     <div *ngIf="selectedObject.displayFigureTypeSelection">

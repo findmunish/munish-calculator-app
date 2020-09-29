@@ -15,6 +15,14 @@ export class AreaComponent implements OnInit {
   operations = OPERATIONS;
   selectedObject = { name: '', operationType: '', index: -1, displayFigureTypeSelection: false, shape:'', isDrawShape: false };
   alertMessage = '';
+  convertToSentenceCase(text) {
+    let sentence = text.toLowerCase().split(".");
+    for(let i = 0; i< sentence.length; i++){
+      sentence[i] = sentence[i].trim();
+      sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+    }
+    return sentence.join(". ");
+  }
   getFigureDimensions() {
     let dimensions = this.figures[this.selectedObject.index].figureEdges;
     let dimensionText = '[ ';

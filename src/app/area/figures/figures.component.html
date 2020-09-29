@@ -2,9 +2,9 @@
   <h4>Enter {{figureObj.name}} Dimensions</h4>
   <div *ngFor="let edge of figureObj.figureEdges">
     <label class="spacing">Enter {{figureObj.name}} {{edge.caption}}: </label>
-    <input type="number" default=-1 class="form-basic spacing" name="inputControl" [(ngModel)]="edge.value" #inputControl="ngModel" placeholder="{{edge.caption}}:" required>
+    <input type="number" default=-1 class="form-basic spacing" name={{edge.caption}} [(ngModel)]="edge.value" #inputControl="ngModel" placeholder="{{edge.caption}}:" required>
     <br/><br/>
-    <div *ngIf="inputControl.invalid && (inputControl.dirty || inputControl.touched)" class="alert">
+    <div *ngIf="inputControl.invalid && (inputControl.dirty || inputControl.touched)" class="alert alert-danger">
       <div *ngIf="inputControl.errors.required">
         {{edge.caption}} is mandatory
       </div>
